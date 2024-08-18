@@ -12,13 +12,13 @@ function App() {
   }, []);
 
   const fetchCustomers = async () => {
-    const response = await axios.get('http://localhost:5000/api/customers');
+    const response = await axios.get('https://customer-integration-project.onrender.com/api/customers');
     setCustomers(response.data);
   };
 
   const addCustomer = async (customerData) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/customers', customerData);
+      const response = await axios.post('https://customer-integration-project.onrender.com/api/customers', customerData);
       console.log('Customer added successfully:', response.data);
       fetchCustomers(); // Refresh customer list after adding
     } catch (error) {
@@ -28,7 +28,7 @@ function App() {
   
   const pushToCRM = async (customerId) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/push-to-crm', { customerId });
+      const response = await axios.post('https://customer-integration-project.onrender.com/api/push-to-crm', { customerId });
       console.log('CRM Push Response:', response.data);
       alert('Customer data pushed to CRM successfully!');
     } catch (error) {
